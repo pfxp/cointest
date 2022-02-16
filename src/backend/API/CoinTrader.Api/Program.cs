@@ -1,12 +1,15 @@
 using CoinTrader.Api.Services;
+using CoinTrader.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add configurations to the container
+builder.Services.Configure<CoinTraderSettings>(builder.Configuration.GetSection("CoinTraderSettings"));
 
 // Add services to the container.
 builder.Services.AddSingleton<IUserPreferencesService, UserPreferencesService>();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

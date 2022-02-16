@@ -1,6 +1,7 @@
 using CoinTrader.Api.Services;
 using CoinTrader.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Coin.Api.Controllers
 {
@@ -10,15 +11,19 @@ namespace Coin.Api.Controllers
     {
         private readonly ILogger<TradingController> _logger;
         private readonly IUserPreferencesService _userPreferencesService;
+        private readonly ICoinTraderSettings _coinTraderSettings;
 
-        public TradingController(ILogger<TradingController> logger, IUserPreferencesService userPreferencesService)
+        public TradingController(ILogger<TradingController> logger,
+            IUserPreferencesService userPreferencesService,
+            IOptions<CoinTraderSettings> coinTraderSettings)
         {
             _logger = logger;
             _userPreferencesService = userPreferencesService;
+            _coinTraderSettings = coinTraderSettings.Value;
         }
 
         [HttpGet("price")]
-        public CoinPriceData GetPrice()
+        public ActionResult<CoinPriceData> GetPrice()
         {
             return new CoinPriceData
             {
@@ -32,9 +37,10 @@ namespace Coin.Api.Controllers
         }
 
         [HttpPost("preferred-coin/{coinType}")]
-        public void SetPreferredCoin(CoinType coinType)
+        public ActionResult SetPreferredCoin(CoinType coinType)
         {
             _userPreferencesService.SetPreferredCoin(coinType);
+            return Ok($"Preferred coin set to {coinType}.");
         }
     }
 }
