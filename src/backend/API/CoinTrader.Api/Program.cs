@@ -9,6 +9,13 @@ builder.Services.Configure<CoinTraderSettings>(builder.Configuration.GetSection(
 // Add services to the container.
 builder.Services.AddSingleton<IUserPreferencesService, UserPreferencesService>();
 
+// HttpFactory
+var coinTraderSettings = builder.Configuration.GetSection("CoinTraderSettings").Get<CoinTraderSettings>();
+builder.Services.AddHttpClient<ICointreeApiService, CointreeApiService>(c =>
+{
+   c.BaseAddress = new Uri(coinTraderSettings.CoinTreePricesUrl);
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

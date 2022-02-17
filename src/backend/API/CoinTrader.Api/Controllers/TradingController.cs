@@ -2,6 +2,7 @@ using CoinTrader.Api.Services;
 using CoinTrader.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 namespace Coin.Api.Controllers
 {
@@ -12,28 +13,24 @@ namespace Coin.Api.Controllers
         private readonly ILogger<TradingController> _logger;
         private readonly IUserPreferencesService _userPreferencesService;
         private readonly ICoinTraderSettings _coinTraderSettings;
+        private readonly ICointreeApiService _cointreeApiService;
 
         public TradingController(ILogger<TradingController> logger,
             IUserPreferencesService userPreferencesService,
-            IOptions<CoinTraderSettings> coinTraderSettings)
+            IOptions<CoinTraderSettings> coinTraderSettings,
+            ICointreeApiService cointreeApiService)
         {
             _logger = logger;
             _userPreferencesService = userPreferencesService;
             _coinTraderSettings = coinTraderSettings.Value;
+            _cointreeApiService = cointreeApiService;
         }
 
+        // TODO Handle errors Peter!
         [HttpGet("price")]
-        public ActionResult<CoinPriceData> GetPrice()
+        public async Task<CoinPriceData?> GetPrice()
         {
-            return new CoinPriceData
-            {
-                Ask = 61839.005295564M,
-                Bid = 60466.24414116M,
-                Buy = _userPreferencesService.GetPreferredCoin(),
-                Rate = 0.00001617M,
-                SpotRate = 61152.624718362M,
-                TimestampUtc = DateTime.UtcNow
-            };
+            return await _cointreeApiService.Get(_userPreferencesService.GetPreferredCoin());
         }
 
         [HttpPost("preferred-coin/{coinType}")]

@@ -2,6 +2,9 @@
 
 # Overview
 
+# Features
+* Efficient socket utilisation with IHttpClientFactory.
+
 # Prerequisites
 * .NET Core 6
 * Visual Studio 2022
@@ -48,15 +51,16 @@ This will open a browser at http://localhost:4200/
 Type `Ctrl-C`
 
 
-
-
-
 # Architecture
 
 # Backend
 
 # xUnit tests
-To run the tests
+To run the tests from the command line:
+```
+cd ~\src\backend\Test\ApiTest
+dotnet watch test
+```
 
 # Frontend
 Angular app made with
