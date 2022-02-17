@@ -29,7 +29,7 @@ export class Client {
      * @return Success
      */
     price() : Observable<CoinPriceData> {
-        let url_ = this.baseUrl + "/Trading";
+        let url_ = this.baseUrl + "/Trading/price";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -75,6 +75,56 @@ export class Client {
         }
         return _observableOf<CoinPriceData>(<any>null);
     }
+
+    /**
+     * @return Success
+     */
+    preferredCoin(coinType: CoinType) : Observable<void> {
+        let url_ = this.baseUrl + "/Trading/preferred-coin/{coinType}";
+        if (coinType === undefined || coinType === null)
+            throw new Error("The parameter 'coinType' must be defined.");
+        url_ = url_.replace("{coinType}", encodeURIComponent("" + coinType));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processPreferredCoin(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processPreferredCoin(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processPreferredCoin(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
 }
 
 export class CoinPriceData implements ICoinPriceData {
@@ -83,7 +133,7 @@ export class CoinPriceData implements ICoinPriceData {
     bid?: number;
     rate?: number;
     spotRate?: number;
-    timestampUtc?: Date;
+    timestamp?: Date;
 
     constructor(data?: ICoinPriceData) {
         if (data) {
@@ -101,7 +151,7 @@ export class CoinPriceData implements ICoinPriceData {
             this.bid = _data["bid"];
             this.rate = _data["rate"];
             this.spotRate = _data["spotRate"];
-            this.timestampUtc = _data["timestampUtc"] ? new Date(_data["timestampUtc"].toString()) : <any>undefined;
+            this.timestamp = _data["timestamp"] ? new Date(_data["timestamp"].toString()) : <any>undefined;
         }
     }
 
@@ -119,7 +169,7 @@ export class CoinPriceData implements ICoinPriceData {
         data["bid"] = this.bid;
         data["rate"] = this.rate;
         data["spotRate"] = this.spotRate;
-        data["timestampUtc"] = this.timestampUtc ? this.timestampUtc.toISOString() : <any>undefined;
+        data["timestamp"] = this.timestamp ? this.timestamp.toISOString() : <any>undefined;
         return data; 
     }
 }
@@ -130,7 +180,7 @@ export interface ICoinPriceData {
     bid?: number;
     rate?: number;
     spotRate?: number;
-    timestampUtc?: Date;
+    timestamp?: Date;
 }
 
 export enum CoinType {

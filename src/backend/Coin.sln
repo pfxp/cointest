@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AC5C77E1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinTrader.Shared.Tests", "Tests\CoinTrader.Shared\CoinTrader.Shared.Tests.csproj", "{17CA103A-197F-4E61-B3D0-FCE0CB3C1782}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinTrader.Api.Client.Tests", "Tests\CoinTrader.Api.Client\CoinTrader.Api.Client.Tests\CoinTrader.Api.Client.Tests.csproj", "{EF3B92A7-56C0-4768-A4F9-FA80794249A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{17CA103A-197F-4E61-B3D0-FCE0CB3C1782}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17CA103A-197F-4E61-B3D0-FCE0CB3C1782}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17CA103A-197F-4E61-B3D0-FCE0CB3C1782}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF3B92A7-56C0-4768-A4F9-FA80794249A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3B92A7-56C0-4768-A4F9-FA80794249A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3B92A7-56C0-4768-A4F9-FA80794249A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3B92A7-56C0-4768-A4F9-FA80794249A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{E7D13ABD-CDD2-4867-B098-5065D08F4674} = {D5FC45D5-4C65-4CD0-874B-0790A4AD88BA}
 		{7E4B10CE-EE2A-4C45-96A2-EDCF2230305E} = {8E8B484F-443E-4F0C-8BD3-F8117FA0727F}
 		{17CA103A-197F-4E61-B3D0-FCE0CB3C1782} = {AC5C77E1-E5A6-4DDB-B305-63D9202FA7FC}
+		{EF3B92A7-56C0-4768-A4F9-FA80794249A2} = {AC5C77E1-E5A6-4DDB-B305-63D9202FA7FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7A32CDA4-7456-4671-87DF-645D049BBC48}
