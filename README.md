@@ -2,12 +2,25 @@
 
 # Overview
 
+# Architecture
+Coin Trader is comprised of a ASP.NET Core Web API backend and an Angular SPA client.
+
+The backend core layer is CoinTrader.Shared which contains data classes, enumerations and services. There is a corresponding xUnit test _CoinTrader.Shared.Tests_.
+
+This is used by _CoinTrader.API_ which is the backend of the coin trading platform. The two requested endpoints are present and Swagger/SwaggerUI is enabled.
+
+_CoinTrader.Api.Client_ contains NSwagStudio v13.15.9 definitions to create C# and TypeScript clients. THe C# client is used by a xUnit test _CoinTrader.Api.Client.Tests_ and the TypeScript client is used by the Angular frontend.
+
+The frontend is an Angular app that calls the backend.
+
 # Features
 * Efficient socket utilisation with IHttpClientFactory.
 
 # Prerequisites
 * .NET Core 6
 * Visual Studio 2022
+
+The backend was developed in VS 2022 and the frontend in VS Code.
 
 # How to run
 CoinTrader has been deployed to Azure but can also run from a developer's machine.
@@ -76,4 +89,5 @@ VS Code workspace at ~/src/frontend/coin-trader-web.code-workspace
 * Configurable source API for real pricedata, using IHttpClientFactory and Newtonsoft to parse JSON: 1 hour.
 * Fleshing out some unit tests, refactoring services outside the CoinTrader.API service: 0.75 hour.
 * Regenerating the API clients and adding the API Client xUnit test: 0.5 hour.
+* Cleaning up the skeleton Angular project and documenting the architecture: 0.5 hour.
 
