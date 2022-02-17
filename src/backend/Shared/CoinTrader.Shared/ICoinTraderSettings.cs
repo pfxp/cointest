@@ -1,4 +1,4 @@
-﻿namespace CoinTrader.Data
+﻿namespace CoinTrader.Shared
 {
     public interface ICoinTraderSettings
     {

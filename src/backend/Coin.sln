@@ -11,11 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinTrader.Api.Client", "AP
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{8E8B484F-443E-4F0C-8BD3-F8117FA0727F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinTrader.Data", "Shared\CoinTrader.Data\CoinTrader.Data.csproj", "{7E4B10CE-EE2A-4C45-96A2-EDCF2230305E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinTrader.Shared", "Shared\CoinTrader.Shared\CoinTrader.Shared.csproj", "{7E4B10CE-EE2A-4C45-96A2-EDCF2230305E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{AC5C77E1-E5A6-4DDB-B305-63D9202FA7FC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AC5C77E1-E5A6-4DDB-B305-63D9202FA7FC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTest", "Test\ApiTest\ApiTest.csproj", "{17CA103A-197F-4E61-B3D0-FCE0CB3C1782}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinTrader.Shared.Tests", "Tests\CoinTrader.Shared\CoinTrader.Shared.Tests.csproj", "{17CA103A-197F-4E61-B3D0-FCE0CB3C1782}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

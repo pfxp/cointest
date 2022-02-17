@@ -1,5 +1,4 @@
-using CoinTrader.Api.Services;
-using CoinTrader.Data;
+using CoinTrader.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 

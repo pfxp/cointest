@@ -72,5 +72,6 @@ VS Code workspace at ~/src/frontend/coin-trader-web.code-workspace
 
 
 # Timings
-Creating the backend solution with basic skeletons for backend API, xUnit test project, Swagger Client project, Angular project skeleton, .gitignore, making a start on the README.me: 4 hours
+* Creating the backend solution with basic skeletons for backend API, xUnit test project, Swagger Client project, Angular project skeleton, .gitignore, making a start on the README.me: 4 hours
+* Configurable source API for real pricedata, using IHttpClientFactory and Newtonsoft to parse JSON: 1 hour.
 

@@ -1,7 +1,6 @@
-﻿using CoinTrader.Data;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace CoinTrader.Api.Services
+namespace CoinTrader.Shared
 {
     public class CointreeApiService : ICointreeApiService
     {

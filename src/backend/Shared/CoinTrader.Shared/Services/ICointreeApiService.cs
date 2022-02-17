@@ -1,6 +1,4 @@
-﻿using CoinTrader.Data;
-
-namespace CoinTrader.Api.Services
+﻿namespace CoinTrader.Shared
 {
     public interface ICointreeApiService
     {

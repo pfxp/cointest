@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CoinTrader.Data
+namespace CoinTrader.Shared
 {
     public enum CoinType
     {

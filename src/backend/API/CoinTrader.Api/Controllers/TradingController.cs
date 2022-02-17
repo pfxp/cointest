@@ -1,8 +1,6 @@
-using CoinTrader.Api.Services;
-using CoinTrader.Data;
+using CoinTrader.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 
 namespace Coin.Api.Controllers
 {
