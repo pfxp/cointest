@@ -1,0 +1,29 @@
+INIT
+$my_resource_group = "cointest-rg"
+$my_location = "Australia East"
+$my_app_service_plan = "cointest-asp"
+$my_tier = "Basic"
+$my_asp_sku = "B1"
+$my_worker_size = "Small"
+$my_asp_worker_size = 1
+$webapp = "cointest-app"
+$my_net_framework_version = "6.0"
+$my_ftp_state = "Disabled"
+
+
+SETUP
+az login
+az configure --defaults group=$my_resource_group
+az configure --defaults location=$my_location
+az configure --list-defaults
+
+az group create --name $my_resource_group
+az appservice plan create --name $my_app_service_plan --sku $my_asp_sku --number-of-workers $my_asp_worker_size
+az webapp create --name $webapp --plan $my_app_service_plan 
+az webapp config set --name $webapp --always-on true --ftps-state disabled --http20-enabled true --net-framework-version $my_net_framework_version --use-32bit-worker-process false
+
+
+TEARDOWN
+az webapp delete --name $webapp
+az appservice plan delete --name $my_app_service_plan
+az group delete --name $my_resource_group --yes

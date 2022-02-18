@@ -10,7 +10,7 @@
   },
   "codeGenerators": {
     "openApiToTypeScriptClient": {
-      "className": "{controller}Client",
+      "className": "{controller}CoinTraderApiClient",
       "moduleName": "",
       "namespace": "",
       "typeScriptVersion": 2.7,
@@ -66,10 +66,9 @@
       "typeNameGeneratorType": null,
       "propertyNameGeneratorType": null,
       "enumNameGeneratorType": null,
-      "checksumCacheEnabled": false,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": "../NSwagOutput/ApiClientTS.ts",
+      "output": "../NSwagOutput/CoinTraderApiClientTS.service.ts",
       "newLineBehavior": "Auto"
     }
   }

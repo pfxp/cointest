@@ -40,7 +40,7 @@
       "useRequestAndResponseSerializationSettings": false,
       "serializeTypeInformation": false,
       "queryNullValue": "",
-      "className": "{controller}ApiClient",
+      "className": "{controller}CoinTraderApiClient",
       "operationGenerationMode": "MultipleClientsFromOperationId",
       "additionalNamespaceUsages": [],
       "additionalContractNamespaceUsages": [],
@@ -90,10 +90,9 @@
       "typeNameGeneratorType": null,
       "propertyNameGeneratorType": null,
       "enumNameGeneratorType": null,
-      "checksumCacheEnabled": false,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": "../NSwagOutput/ApiClientCS.cs",
+      "output": "../NSwagOutput/CoinTraderApiClientCS.cs",
       "newLineBehavior": "Auto"
     }
   }

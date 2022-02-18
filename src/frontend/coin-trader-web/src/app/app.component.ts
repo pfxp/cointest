@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./global.scss']
 })
 export class AppComponent {
-  title = 'coin-trader-web';
+  title: string = 'coin-trader-web';
 }
