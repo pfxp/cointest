@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { BackendCommsService } from '@app/services/backend-comms.service';
+import { CoinType } from '@app/services/CoinTraderApiClientTS.service';
 
 
 @Component({
@@ -16,13 +17,15 @@ export class PriceHomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.backendComms.currentMessage.subscribe(data =>
-      {
-        this.askValue = data.askValue ?? 0;
-        this.askChangePercentage = data.askChangePercentage ?? 0;
-      });
+    this.backendComms.currentMessage.subscribe(data => {
+      this.askValue = data.askValue ?? 0;
+      this.askChangePercentage = data.askChangePercentage ?? 0;
+    });
   }
 
-
+  coinTypeChanged(newCoinType: CoinType): void {
+    console.log(`Changed coin to ${newCoinType} in price-home.`);
+    this.backendComms.setCoinType(newCoinType);
+  }
 
 }

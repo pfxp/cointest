@@ -185,9 +185,9 @@ export interface ICoinPriceData {
 }
 
 export enum CoinType {
-    _0 = 0,
-    _1 = 1,
-    _2 = 2,
+    BTC = "BTC",
+    ETH = "ETH",
+    XRP = "XRP",
 }
 
 export class ApiException extends Error {

@@ -1,6 +1,6 @@
 <h1>Current Coin Price</h1>
 
-<app-coin-choice></app-coin-choice>
+<app-coin-choice (coinTypeChanged)="coinTypeChanged($event)"></app-coin-choice>
 
 <app-ask-value-display [askValue]="askValue"></app-ask-value-display>
 

@@ -24,41 +24,45 @@ export class BackendCommsService {
   }
 
   setCoinType(coinType: CoinType): void {
-    console.log('Setting coin type to {coinType}.');
-    this.coinTraderApiClient.preferredCoin(coinType);
+    console.log(`Setting coin type to ${coinType} on backend.`);
+    const subscription = this.coinTraderApiClient.preferredCoin(coinType).subscribe(
+      data => {
+        this.currentAskPrice = undefined;
+        this.askChangePercentage = undefined;
+        console.log(`Reset the ask and ask change.`);
+      }
+    );
   }
 
   getAskPrice(): void {
 
-    let newAskPrice : number | undefined = undefined;
+    let newAskPrice: number | undefined = undefined;
 
     this.coinTraderApiClient.price().subscribe(
       data => {
         newAskPrice = data.ask;
 
         if (newAskPrice === undefined) {
-          this.messageSource.next({askValue: undefined, askChangePercentage: undefined});
+          this.messageSource.next({ askValue: undefined, askChangePercentage: undefined });
         }
         else {
-          if (this.currentAskPrice === undefined)
-          {
+          if (this.currentAskPrice === undefined) {
             // This is our first pricing data
             this.currentAskPrice = newAskPrice;
-            this.messageSource.next({askValue: newAskPrice, askChangePercentage: undefined});
+            this.messageSource.next({ askValue: newAskPrice, askChangePercentage: undefined });
           }
-          else if (newAskPrice != this.currentAskPrice)
-          {
+          else if (newAskPrice != this.currentAskPrice) {
             let priceDifference = newAskPrice - this.currentAskPrice;
             let percentDiff = priceDifference / this.currentAskPrice;
             this.currentAskPrice = newAskPrice;
-            this.messageSource.next({askValue: newAskPrice, askChangePercentage: percentDiff});
+            this.messageSource.next({ askValue: newAskPrice, askChangePercentage: percentDiff });
           }
         }
       },
       error => {
         // We want the price display components to know there is no data so instead of keeping the last value
         // displayed they should really display some sort of error.
-        this.messageSource.next({askValue: undefined, askChangePercentage: undefined});
+        this.messageSource.next({ askValue: undefined, askChangePercentage: undefined });
         console.error(error);
       });
   }

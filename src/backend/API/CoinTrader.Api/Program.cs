@@ -1,4 +1,6 @@
 using CoinTrader.Shared;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,23 +14,29 @@ builder.Services.AddSingleton<IUserPreferencesService, UserPreferencesService>()
 var coinTraderSettings = builder.Configuration.GetSection("CoinTraderSettings").Get<CoinTraderSettings>();
 builder.Services.AddHttpClient<ICointreeApiService, CointreeApiService>(c =>
 {
-   c.BaseAddress = new Uri(coinTraderSettings.CoinTreePricesUrl);
+    c.BaseAddress = new Uri(coinTraderSettings.CoinTreePricesUrl);
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
-      builder => {
+      builder =>
+      {
           builder.AllowAnyOrigin()
         .AllowAnyHeader()
         .AllowAnyMethod();
       });
 });
-
 
 var app = builder.Build();
 
