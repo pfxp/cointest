@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://cointest-app.azurewebsites.net',
+  API_URL: 'https://localhost:7134',
 };
 
 /*

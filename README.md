@@ -75,21 +75,18 @@ Type `Ctrl-C`
 
 # Backend
 
+VS2022 workspace at ~/src/backend/Coin.sln
+
+# Frontend
+
+VS Code workspace at ~/src/frontend/coin-trader-web.code-workspace
+
 # xUnit tests
 To run the tests from the command line:
 ```
 cd ~\src\backend\Test\ApiTest
 dotnet watch test
 ```
-
-# Frontend
-Angular app made with
-
-
-C:\dev\coin\src\frontend>ng new coin-trader-web --style=scss
-
-VS Code workspace at ~/src/frontend/coin-trader-web.code-workspace
-
 
 # Timings
 * Creating the backend solution with basic skeletons for backend API, xUnit test project, Swagger Client project, Angular project skeleton, .gitignore, making a start on the README.me: 4 hours
