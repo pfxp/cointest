@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['../../../../global.scss']
 })
 export class AskChangeDisplayComponent implements OnInit {
-  @Input() askChange: number = 1.1234567;
+  @Input() askChangePercentage: number = 0;
 
   constructor() { }
 

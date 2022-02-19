@@ -12,7 +12,7 @@ namespace CoinTrader.Api.Client.Tests
         public async Task Client()
         {
             HttpClient httpClient = new HttpClient();
-            ApiClient client = new ApiClient(BASE_URL, httpClient);
+            CoinTraderApiClient client = new CoinTraderApiClient(BASE_URL, httpClient);
             CoinPriceData priceData = await client.PriceAsync();
             Assert.Equal(CoinType._0, priceData.Buy);
 

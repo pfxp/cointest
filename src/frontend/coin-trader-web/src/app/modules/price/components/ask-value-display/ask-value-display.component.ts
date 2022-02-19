@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['../../../../global.scss']
 })
 export class AskValueDisplayComponent implements OnInit {
-  @Input() askValue: number = 54321.1234567;
+  @Input() askValue: number | undefined = undefined;
 
   constructor() { }
 

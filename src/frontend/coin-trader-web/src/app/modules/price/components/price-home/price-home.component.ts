@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { CoinTraderApiClient } from '@app/services/CoinTraderApiClientTS.service';
+import { BackendCommsService } from '@app/services/backend-comms.service';
+
 
 @Component({
   selector: 'app-price-home',
@@ -8,16 +9,20 @@ import { CoinTraderApiClient } from '@app/services/CoinTraderApiClientTS.service
 })
 export class PriceHomeComponent implements OnInit {
   @Output() price?: number = 0;
+  askValue: number = 0;
+  askChangePercentage: number = 0;
 
-   constructor(private apiClient: CoinTraderApiClient) { }
+  constructor(private backendComms: BackendCommsService) { }
 
   ngOnInit(): void {
-     this.apiClient.price().subscribe(data => {
-       this.price = data?.ask?.valueOf()
-     }, error => {
-       console.log('Peter, some sort of error happened.' + error)
-     });
 
+    this.backendComms.currentMessage.subscribe(data =>
+      {
+        this.askValue = data.askValue ?? 0;
+        this.askChangePercentage = data.askChangePercentage ?? 0;
+      });
   }
+
+
 
 }
