@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AskValueDisplayComponent implements OnInit {
   @Input() askValue: number | undefined = undefined;
+  @Input() showTitle : boolean = true;
 
   constructor() { }
 

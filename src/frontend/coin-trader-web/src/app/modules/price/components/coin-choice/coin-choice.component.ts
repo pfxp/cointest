@@ -10,6 +10,7 @@ import { CoinType } from '@app/services/CoinTraderApiClientTS.service';
 })
 export class CoinChoiceComponent implements OnInit {
   @Input() preferredCoinType = "BTC";
+  @Input() showTitle : boolean = true;
   @Output() coinTypeChanged = new EventEmitter<CoinType>();
 
   constructor() { }

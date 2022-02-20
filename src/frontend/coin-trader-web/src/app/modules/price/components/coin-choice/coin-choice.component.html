@@ -1,3 +1,5 @@
+<div *ngIf="showTitle">Choose your coin</div>
+
 <mat-button-toggle-group name="preferredCoin" aria-label="Preferred Coin" multiple="false" [value]="preferredCoinType" (change)='coinChanged($event)'>
     <mat-button-toggle value="BTC">BTC</mat-button-toggle>
     <mat-button-toggle value="ETH">ETH</mat-button-toggle>

@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AskChangeDisplayComponent implements OnInit {
   @Input() askChangePercentage: number = 0;
+  @Input() showTitle : boolean = true;
 
   constructor() { }
 

@@ -1,7 +1,10 @@
-<h1>Current Coin Price</h1>
+<app-coin-choice (coinTypeChanged)="coinTypeChanged($event)" [showTitle]="true"></app-coin-choice>
 
-<app-coin-choice (coinTypeChanged)="coinTypeChanged($event)"></app-coin-choice>
+<br>
+<br>
 
-<app-ask-value-display [askValue]="askValue"></app-ask-value-display>
+<app-ask-value-display [askValue]="askValue" [showTitle]="true"></app-ask-value-display>
 
-<app-ask-change-display [askChangePercentage]="askChangePercentage"></app-ask-change-display>
+<br>
+
+<app-ask-change-display [askChangePercentage]="askChangePercentage" [showTitle]="true"></app-ask-change-display>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: '/price', pathMatch: 'full' },
+  { path: '**', redirectTo: '/price', pathMatch: 'full' },
   { path: 'price', loadChildren: () => import('./modules/price/price.module').then(m => m.PriceModule) }
 ];
 
