@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
-using Xunit;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace CoinTrader.Shared.Tests
 {

@@ -306,6 +306,7 @@ namespace CoinTrader.Api.Client
     public partial class CoinPriceData
     {
         [Newtonsoft.Json.JsonProperty("buy", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public CoinType Buy { get; set; }
 
         [Newtonsoft.Json.JsonProperty("ask", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -329,11 +330,14 @@ namespace CoinTrader.Api.Client
     public enum CoinType
     {
 
-        _0 = 0,
+        [System.Runtime.Serialization.EnumMember(Value = @"BTC")]
+        BTC = 0,
 
-        _1 = 1,
+        [System.Runtime.Serialization.EnumMember(Value = @"ETH")]
+        ETH = 1,
 
-        _2 = 2,
+        [System.Runtime.Serialization.EnumMember(Value = @"XRP")]
+        XRP = 2,
 
     }
 

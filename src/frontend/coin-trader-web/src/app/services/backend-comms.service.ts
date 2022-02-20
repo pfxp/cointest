@@ -1,6 +1,6 @@
 import { BehaviorSubject, throwIfEmpty } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { CoinPriceData, CoinTraderApiClient, CoinType } from './CoinTraderApiClientTS.service';
+import { CoinTraderApiClient, CoinType } from './CoinTraderApiClientTS.service';
 import { AskPriceInfo } from '@app/interfaces'
 import { timer } from 'rxjs';
 

@@ -6,8 +6,10 @@ namespace CoinTrader.Shared
     {
         [Display(Name = "Bitcoin")]
         BTC,
+
         [Display(Name = "Ethereum")]
         ETH,
+
         [Display(Name = "XRP Ledger")]
         XRP
     }

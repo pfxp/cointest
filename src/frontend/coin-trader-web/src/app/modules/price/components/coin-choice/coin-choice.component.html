@@ -1,4 +1,4 @@
-<div *ngIf="showTitle">Choose your coin</div>
+<h2 *ngIf="showTitle">Choose your coin</h2>
 
 <mat-button-toggle-group name="preferredCoin" aria-label="Preferred Coin" multiple="false" [value]="preferredCoinType" (change)='coinChanged($event)'>
     <mat-button-toggle value="BTC">BTC</mat-button-toggle>
