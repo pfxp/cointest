@@ -12,6 +12,7 @@ export class PriceHomeComponent implements OnInit {
   @Output() price?: number = 0;
   askValue: number = 0;
   askChangePercentage: number = 0;
+  currentCoinType: CoinType = CoinType.BTC;
 
   constructor(private backendComms: BackendCommsService) { }
 
@@ -25,6 +26,7 @@ export class PriceHomeComponent implements OnInit {
 
   coinTypeChanged(newCoinType: CoinType): void {
     console.log(`Changed coin to ${newCoinType} in price-home.`);
+    this.currentCoinType = newCoinType;
     this.backendComms.setCoinType(newCoinType);
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CoinType } from '@app/services/CoinTraderApiClientTS.service';
 
 @Component({
   selector: 'app-ask-value-display',
@@ -8,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AskValueDisplayComponent implements OnInit {
   @Input() askValue: number | undefined = undefined;
   @Input() showTitle : boolean = true;
+  @Input() coinType : CoinType = CoinType.BTC;
 
   constructor() { }
 
