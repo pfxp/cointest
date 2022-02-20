@@ -3,8 +3,7 @@
 # Overview
 Coin Trader displays an updating value of a cryptocurrency coin as well as the percentage change since the last value was retrieved.
 
-
-It can be viewed at https://gentle-mushroom-067b88b00.1.azurestaticapps.net/price
+It can be viewed at https://gentle-mushroom-067b88b00.1.azurestaticapps.net
 
 It is hosted on GitHub.
 
@@ -30,21 +29,25 @@ The frontend is an Angular SPA that calls the backend. An Angular module _price_
 * Angular CLI v13.1.1 or later
 
 # Features
-* The backend only does 
+* The backend only does data processing so does not need to generate views like a MFC app.
 * Efficient socket utilisation with IHttpClientFactory.
 * Injects services where necessary.
 * An Angular Material Button Toggle is used for coin selection so only a valid coin can be chosen.
 * If the backend can't communicate with https://trade.cointree.com/api/prices/aud/{coinsymbol} the UI will update with empty values.
 * Price precision goes to 8 decimal places and uses a currency price for correct symbol, thousands separator.
+* Frontend is decoupled from the backend API using a swagger endpoint and NSwagStudio to generate backend clients.
 
 # Todo/Things to improve if I had more time
 * Implement a GetPreferredCoin backend endpoint so that after a F5 refresh the user receives the preferred coin from the backend
 so the button toggle can be set correctly.
 * Angular component tests have not been implemented.
 * Tighten the CORS policy. Currently you can call the backend from any origin.
-* Get rid of vertical scroll.
+* Get rid of vertical scrollbar.
 * I left the swagger endpoints in for production though normally I wouldn't do this.
 * Unit tests are not configurable and assume the backend is running under VS2022.
+* The frontend hits the backend on a 1 second timer. In future the backend should detect when the price updates and use SignalR or similar
+to update the connected frontends.
+* Better typography and layout
 
 # How to run
 The backend was developed in VS 2022 and the frontend in VS Code.
@@ -100,7 +103,14 @@ VS Code workspace at ~/src/frontend/coin-trader-web.code-workspace
 # xUnit tests
 To run the tests from the command line:
 ```
-cd ~\src\backend\Test\ApiTest
+cd ~\src\backend\Tests\oinTrader.Shared
+dotnet watch test
+```
+
+and
+
+```
+cd ~\src\backend\Tests\CoinTrader.Api.Client\CoinTrader.Api.Client.Tests
 dotnet watch test
 ```
 
